@@ -2,10 +2,11 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const taskRoutes = require('./routes/tasksRoute');
-
+const cors = require("cors");
+const app = express();
 dotenv.config();
 
-const app = express();
+app.use(cors());
 app.use(express.json());
 
 const startServer = async () => {

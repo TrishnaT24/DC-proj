@@ -56,32 +56,6 @@ exports.updateTaskStatus = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
-
-
-// Fetch tasks (For leader: all tasks, for member: their tasks)
-// exports.getTasks = async (req, res) => {
-//   try {
-//     const username = req.query.username; // Sent from frontend
-
-//     const user = await User.findOne({ username });
-//     if (!user) {
-//       return res.status(400).json({ error: 'User not found' });
-//     }
-
-//     let tasks;
-//     if (user.role === 'leader') {
-//       // Leader sees all tasks they created
-//       tasks = await Task.find({ createdBy: username });
-//     } else {
-//       // Member sees only their assigned tasks
-//       tasks = await Task.find({ assignedTo: username });
-//     }
-
-//     res.status(200).json(tasks);
-//   } catch (error) {
-//     res.status(500).json({ error: 'Server error' });
-//   }
-// };
 exports.getTasks = async (req, res) => {
   try {
     const tasks = await Task.find(); // ⬅️ Fetch all tasks, no filtering
