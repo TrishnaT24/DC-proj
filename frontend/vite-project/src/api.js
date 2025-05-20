@@ -1,3 +1,5 @@
+import { leader_host, member_host } from "./route";
+
 // Task API functions
 export const fetchTasks = async () => {
   try {
@@ -16,7 +18,7 @@ export const fetchTasks = async () => {
 
 export const createTask = async (taskData) => {
   try {
-    const response = await fetch('http://localhost:3000/api/tasks', {
+    const response = await fetch(`${leader_host}/api/tasks`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +40,7 @@ export const createTask = async (taskData) => {
 
 export const updateTaskStatus = async (taskData) => {
   try {
-    const response = await fetch('http://localhost:3000/api/tasks/status', {
+    const response = await fetch(`${member_host}/api/tasks/status`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
